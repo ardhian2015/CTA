@@ -5,10 +5,20 @@
   "builds": [
     {
       "src": "dist/server/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "dist/server/**",
+          "dist/client/**"
+        ]
+      }
     }
   ],
   "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/dist/client/assets/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "dist/server/server.js"
