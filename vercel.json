@@ -3,33 +3,13 @@
   "builds": [
     {
       "src": "dist/server/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "runtime": "nodejs22.x",
-        "includeFiles": [
-          "dist/server/**",
-          "dist/client/**"
-        ],
-        "excludeFiles": [
-          "dist/server/**/*.map"
-        ]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "dist/server/server.js"
     }
-  ],
-  "functions": {
-    "dist/server/server.js": {
-      "runtime": "nodejs22.x",
-      "maxDuration": 10
-    }
-  }
+  ]
 }
